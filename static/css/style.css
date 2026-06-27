@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f172a;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Remove default focus outline for TV UI */
+.focusable {
+    outline: none;
+}
+.navbar {
+    background-color: #0b1121;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    position: relative;
+}
+.nav-icon::after {
+    content: '';
+    position: absolute;
+    top: -15px; bottom: -15px; left: -15px; right: -15px;
+}
+.nav-icon:hover, .nav-icon.focused {
+    color: #38bdf8;
+    transform: scale(1.1);
+}
+.nav-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-logo {
+    margin: 0;
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: #38bdf8;
+    letter-spacing: -1.5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    will-change: transform, opacity, text-shadow;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+}
+
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.center-frame {
+    width: var(--frame-width, 100%);
+    height: var(--frame-height, 100%);
+
+    background-color: #38bdf8;
+    border-radius: var(--blob-radius, 0px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    filter: blur(var(--blob-blur, 0px));
+    box-shadow: 0 25px 50px -12px rgba(56, 189, 248, var(--shadow-opacity, 0));
+    will-change: width, height, border-radius, filter, box-shadow;
+}
+
+.center-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #38bdf8, #818cf8, #f472b6);
+    opacity: var(--blob-opacity, 0);
+    z-index: -1;
+    border-radius: inherit;
+}
+
+.header-text {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.header-text h2 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.scrolling-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 20;
+    position: relative;
+    margin-top: 150px;
+
+    opacity: 0;
+    transform: translateY(100px);
+    will-change: opacity, transform;
+}
+
+.content-section {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 0 75px 0;
+    padding: 40px;
+    background: radial-gradient(circle at top left, rgba(30, 41, 59, 0.75), rgba(11, 17, 33, 0.75));
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.content-section:hover, .content-section.focused {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.4);
+    border-color: #38bdf8;
+}
+
+.content-section h3 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin: 0;
+}
+
+.cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(244, 114, 182, 0.1));
+    border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.cta-button {
+    margin-top: 25px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0b1121;
+    background-color: #38bdf8;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+}
+
+.cta-button:hover, .cta-button.focused {
+    transform: scale(1.1);
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.6);
+}
+/* --- SIDE MENUS --- */
+.side-menu {
+    font-family: 'Inter', sans-serif;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 80%;
+    background-color: rgba(11, 17, 33, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    padding: 30px 40px 40px; /* Reduced top padding to match grid */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.left-menu {
+    left: 0;
+    transform: translateX(-100%);
+    box-shadow: 10px 0 40px rgba(56, 189, 248, 0.15); /* Soft blue glow */
+    border-right: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.left-menu.open {
+    transform: translateX(0);
+}
+
+.right-menu {
+    right: 0;
+    transform: translateX(100%);
+    box-shadow: -10px 0 40px rgba(56, 189, 248, 0.15); /* Soft blue glow */
+    border-left: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.right-menu.open {
+    transform: translateX(0);
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.menu-content a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(56, 189, 248, 0.3); /* Subtle default glow */
+    transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
+    position: relative;
+}
+.menu-content a::after {
+    content: '';
+    position: absolute;
+    top: -10px; bottom: -10px; left: -20px; right: -20px;
+}
+
+.menu-content a:hover, .menu-content a.focused {
+    color: #ffffff;
+    transform: translateX(10px);
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.6); /* Soft neon glow on hover */
+}
+
+.right-menu .menu-content a:hover, .right-menu .menu-content a.focused {
+    transform: translateX(-10px);
+    text-align: right;
+}
+.right-menu .menu-content a {
+    text-align: right;
+}
+
+/* Background overlay when menus are open */
+.menu-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Close Button in Side Menus */
+.close-btn {
+    width: 35px; 
+    height: 35px;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    margin-bottom: 40px; /* Pushes the menu items down to maintain the visual layout */
+    position: relative;
+}
+.close-btn::after {
+    content: '';
+    position: absolute;
+    top: -15px; bottom: -15px; left: -15px; right: -15px;
+}
+.close-btn:hover, .close-btn.focused {
+    color: #f472b6; /* Pink hover */
+    transform: scale(1.1) rotate(90deg);
+}
+.close-btn svg {
+    width: 100%;
+    height: 100%;
+}
+.left-menu .close-btn {
+    align-self: flex-start;
+}
+.right-menu .close-btn {
+    align-self: flex-end;
+}
+
+/* --- SCROLL INDICATOR --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    color: #cbd5e1;
+    animation: bounce 2s infinite ease-in-out;
+    will-change: transform, opacity;
+}
+
+.scroll-indicator svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(15px);
+    }
+}

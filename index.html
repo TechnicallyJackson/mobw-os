@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mobw - winners' web</title>
+    <!-- Use relative path to static folder for GitHub Pages -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <!-- Hamburger Icon (Left) -->
+        <div class="nav-icon focusable" id="hamburger-btn" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </div>
+
+        <!-- Centered Logo -->
+        <h1 class="navbar-logo">mobw</h1>
+
+        <!-- Profile Icon (Right) -->
+        <div class="nav-icon focusable" id="profile-btn" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+        </div>
+    </nav>
+
+    <!-- Left Pop-out Menu -->
+    <div class="side-menu left-menu" id="left-menu">
+        <div class="close-btn focusable" id="close-left" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
+        <div class="menu-content">
+            <a href="#" class="focusable" tabindex="0">Dashboard</a>
+            <a href="#" class="focusable" tabindex="0">Projects</a>
+            <a href="#" class="focusable" tabindex="0">Settings</a>
+        </div>
+    </div>
+
+    <!-- Right Pop-out Menu -->
+    <div class="side-menu right-menu" id="right-menu">
+        <div class="close-btn focusable" id="close-right" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
+        <div class="menu-content">
+            <a href="#" class="focusable" tabindex="0">My Profile</a>
+            <a href="#" class="focusable" tabindex="0">Billing</a>
+            <a href="#" class="focusable" tabindex="0">Log Out</a>
+        </div>
+    </div>
+
+    <!-- Overlay for closing menus -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <main class="main-content">
+        <!-- The Sticky Hero Section -->
+        <section class="hero-section">
+            <div class="center-frame" id="anim-frame">
+                <div class="header-text">
+                    <h2>wanna see a winners way to web?</h2>
+                </div>
+            </div>
+            
+            <!-- Scrolling Indicator Arrow -->
+            <div class="scroll-indicator" id="scroll-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- The content that scrolls up on the right side -->
+        <div class="scrolling-content">
+            <section class="content-section focusable" tabindex="0">
+                <h3>your living room. your rules.</h3>
+                <p>Ditch the ad-riddled, sluggish smart TV menus. mobw is a custom, self-hosted TV operating system designed to aggregate your favorite streaming apps into one gorgeous, lightning-fast 10-foot UI.</p>
+            </section>
+
+            <section class="content-section focusable" tabindex="0">
+                <h3>blazing fast. hyper modern.</h3>
+                <p>Glassmorphism, buttery smooth 60fps animations, and intuitive spatial navigation. Experience the prestige of a next-generation TV OS, entirely open and running directly from your home network.</p>
+            </section>
+
+            <section class="content-section focusable" tabindex="0">
+                <h3>all your apps. zero bloat.</h3>
+                <p>Whether you're launching Netflix, Plex, Jellyfin, or a custom homebrew app, mobw gives you a unified, cinematic interface without the tracking, ads, or lag of corporate TV sticks.</p>
+            </section>
+            
+            <section class="content-section cta-section focusable" tabindex="0">
+                <h3>take back your tv.</h3>
+                <p>mobw is completely open-source. Check out the code and start building your own TV OS today.</p>
+                <button class="cta-button focusable" tabindex="0" onclick="window.location.href='http://example.com'">View on GitHub</button>
+            </section>
+        </div>
+    </main>
+
+    <script src="./static/js/script.js"></script>
+    <script src="./static/js/tv-navigation.js"></script>
+</body>
+
+</html>
