@@ -123,7 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // If no elements are visible (e.g., during the cinematic intro), just scroll physically
         if (elements.length === 0) {
-            if (e.key === 'ArrowDown') slowScrollIntro(600, 2500); // 2.5 second cinematic scroll to maxScroll
+            if (e.key === 'ArrowDown') {
+                const firstCard = document.querySelector('.content-section');
+                if (firstCard) {
+                    const rect = firstCard.getBoundingClientRect();
+                    // rect.top includes the 100px translateY from CSS that is removed during scroll
+                    const trueTop = rect.top + window.scrollY - 100;
+                    const targetY = trueTop - (window.innerHeight / 2) + (rect.height / 2);
+                    slowScrollIntro(targetY, 2500); // Cinematic scroll to exact center
+                } else {
+                    slowScrollIntro(600, 2500); // Fallback
+                }
+            }
             return;
         }
 
