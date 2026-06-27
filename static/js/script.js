@@ -125,46 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // --- SIDE MENU LOGIC ---
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const profileBtn = document.getElementById('profile-btn');
-    const leftMenu = document.getElementById('left-menu');
-    const rightMenu = document.getElementById('right-menu');
-    const overlay = document.getElementById('menu-overlay');
-    
-    // Close buttons inside the menus
-    const closeLeft = document.getElementById('close-left');
-    const closeRight = document.getElementById('close-right');
-    
-    function closeAllMenus() {
-        if (leftMenu) leftMenu.classList.remove('open');
-        if (rightMenu) rightMenu.classList.remove('open');
-        if (overlay) overlay.classList.remove('active');
-    }
-
-    if (hamburgerBtn) {
-        hamburgerBtn.addEventListener('click', () => {
-            if (leftMenu) leftMenu.classList.add('open');
-            if (overlay) overlay.classList.add('active');
-        });
-    }
-
-    if (profileBtn) {
-        profileBtn.addEventListener('click', () => {
-            if (rightMenu) rightMenu.classList.add('open');
-            if (overlay) overlay.classList.add('active');
-        });
-    }
-
-    // Attach click events to the close buttons
-    if (closeLeft) closeLeft.addEventListener('click', closeAllMenus);
-    if (closeRight) closeRight.addEventListener('click', closeAllMenus);
-
-    // Close when clicking the dark overlay
-    if (overlay) {
-        overlay.addEventListener('click', closeAllMenus);
-    }
-    
     // Trigger scroll event once to apply initial layout states (like hiding the navbar)
     window.dispatchEvent(new Event('scroll'));
 });
