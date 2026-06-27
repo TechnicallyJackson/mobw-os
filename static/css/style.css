@@ -338,20 +338,21 @@ body::-webkit-scrollbar {
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    color: #cbd5e1;
-    animation: pulse 3s infinite ease-in-out;
+    color: #1e3a8a; /* Dark blue */
     will-change: opacity;
     white-space: nowrap;
 }
 
 .scroll-indicator span {
+    display: inline-block;
+    animation: pulse 3s infinite ease-in-out;
     font-family: 'Inter', sans-serif;
     font-weight: 400; /* Thin look */
     font-size: 0.85rem;
     letter-spacing: 6px;
     text-transform: uppercase;
-    color: #38bdf8;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    color: #1e3a8a; /* Dark blue */
+    text-shadow: 0 0 10px rgba(30, 58, 138, 0.4);
 }
 
 @keyframes pulse {
