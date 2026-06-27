@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const elements = getFocusableElements();
                 const firstCard = elements.find(el => el.classList.contains('content-section'));
                 if (firstCard) {
-                    setFocus(firstCard);
+                    setFocus(firstCard, true);
                 } else if (elements.length > 0) {
-                    setFocus(elements[0]);
+                    setFocus(elements[0], true);
                 }
             }
         }
@@ -58,6 +58,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    let glideAnimationId = null;
+
+    function smoothGlideToCenter(el, duration = 600) {
+        if (glideAnimationId) cancelAnimationFrame(glideAnimationId);
+        
+        const rect = el.getBoundingClientRect();
+        const targetY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
+        
+        const startY = window.scrollY;
+        const diff = targetY - startY;
+        const startTime = performance.now();
+        
+        function step(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // easeInOutCubic
+            const ease = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            window.scrollTo(0, startY + (diff * ease));
+            
+            if (progress < 1) {
+                glideAnimationId = requestAnimationFrame(step);
+            }
+        }
+        glideAnimationId = requestAnimationFrame(step);
+    }
+
     function setFocus(el) {
         if (currentFocused) {
             currentFocused.classList.remove('focused');
@@ -72,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     currentFocused.closest('.side-menu');
             
             if (!isStickyOrFixed) {
-                // Always smoothly scroll the focused element into the absolute center of the viewport
-                currentFocused.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Use custom easeInOutCubic glide instead of native scrollIntoView to prevent snapping
+                smoothGlideToCenter(currentFocused, 700);
             }
         }
     }
