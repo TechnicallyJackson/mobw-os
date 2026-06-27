@@ -58,34 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    let glideAnimationId = null;
-
-    function smoothGlideToCenter(el, duration = 600) {
-        if (glideAnimationId) cancelAnimationFrame(glideAnimationId);
-        
-        const rect = el.getBoundingClientRect();
-        const targetY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
-        
-        const startY = window.scrollY;
-        const diff = targetY - startY;
-        const startTime = performance.now();
-        
-        function step(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // easeInOutCubic
-            const ease = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-            window.scrollTo(0, startY + (diff * ease));
-            
-            if (progress < 1) {
-                glideAnimationId = requestAnimationFrame(step);
-            }
-        }
-        glideAnimationId = requestAnimationFrame(step);
-    }
-
-    function setFocus(el) {
+    function setFocus(el, skipScroll = false) {
         if (currentFocused) {
             currentFocused.classList.remove('focused');
         }
@@ -98,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     currentFocused.closest('.navbar') || 
                                     currentFocused.closest('.side-menu');
             
-            if (!isStickyOrFixed) {
-                // Use custom easeInOutCubic glide instead of native scrollIntoView to prevent snapping
-                smoothGlideToCenter(currentFocused, 700);
+            if (!isStickyOrFixed && !skipScroll) {
+                // Use native smooth scrolling to keep the highlighted text box in the absolute center
+                currentFocused.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     }
@@ -154,8 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const firstCard = document.querySelector('.content-section');
                 if (firstCard) {
                     const rect = firstCard.getBoundingClientRect();
-                    // rect.top includes the 100px translateY from CSS that is removed during scroll
-                    const trueTop = rect.top + window.scrollY - 100;
+                    // rect.top includes a 50px translateY from script.js that is removed during scroll
+                    const trueTop = rect.top + window.scrollY - 50;
                     const targetY = trueTop - (window.innerHeight / 2) + (rect.height / 2);
                     slowScrollIntro(targetY, 2500); // Cinematic scroll to exact center
                 } else {
