@@ -26,9 +26,10 @@ body::-webkit-scrollbar {
 .navbar {
     background-color: #0b1121;
     padding: 15px 40px;
+    height: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
