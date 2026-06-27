@@ -72,15 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     currentFocused.closest('.side-menu');
             
             if (!isStickyOrFixed) {
-                // Scroll into view if offscreen
-                const rect = currentFocused.getBoundingClientRect();
-                const navH = 80; // approximate navbar height padding
-                
-                if (rect.top < navH) {
-                    window.scrollBy({ top: rect.top - navH - 20, behavior: 'smooth' });
-                } else if (rect.bottom > window.innerHeight) {
-                    window.scrollBy({ top: rect.bottom - window.innerHeight + 20, behavior: 'smooth' });
-                }
+                // Always smoothly scroll the focused element into the absolute center of the viewport
+                currentFocused.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     }
