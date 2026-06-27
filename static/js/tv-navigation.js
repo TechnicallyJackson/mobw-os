@@ -176,33 +176,4 @@ document.addEventListener('DOMContentLoaded', () => {
             // Intentionally removed ArrowUp fallback so the user cannot scroll back up past the top element into the intro.
         }
     });
-
-    // Handle menu context switching
-    document.addEventListener('click', (e) => {
-        // Find if they clicked (or hit Enter on) a menu trigger
-        const target = e.target.closest('.nav-icon') || e.target.closest('.close-btn') || e.target.closest('.menu-overlay');
-        
-        if (target) {
-            if (target.id === 'hamburger-btn') {
-                setTimeout(() => {
-                    const closeBtn = document.getElementById('close-left');
-                    if (closeBtn && getFocusableElements().includes(closeBtn)) setFocus(closeBtn);
-                }, 350); // wait for CSS slide transition
-            } else if (target.id === 'profile-btn') {
-                setTimeout(() => {
-                    const closeBtn = document.getElementById('close-right');
-                    if (closeBtn && getFocusableElements().includes(closeBtn)) setFocus(closeBtn);
-                }, 350);
-            } else if (target.classList.contains('close-btn') || target.classList.contains('menu-overlay')) {
-                // When menu closes, focus returns to the navbar triggers
-                setTimeout(() => {
-                    if (target.id === 'close-left') {
-                        setFocus(document.getElementById('hamburger-btn'));
-                    } else if (target.id === 'close-right') {
-                        setFocus(document.getElementById('profile-btn'));
-                    }
-                }, 400);
-            }
-        }
-    });
 });
