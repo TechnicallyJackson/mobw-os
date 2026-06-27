@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Disable native user scrolling to enforce TV-only navigation
+    window.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
+    window.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+
     const frame = document.getElementById('anim-frame');
     const headerText = document.querySelector('.header-text');
     const sideContent = document.querySelector('.scrolling-content');
