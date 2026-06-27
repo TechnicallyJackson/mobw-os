@@ -335,27 +335,30 @@ body::-webkit-scrollbar {
 /* --- SCROLL INDICATOR --- */
 .scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
     color: #cbd5e1;
-    animation: bounce 2s infinite ease-in-out;
-    will-change: transform, opacity;
+    animation: pulse 3s infinite ease-in-out;
+    will-change: opacity;
+    white-space: nowrap;
 }
 
-.scroll-indicator svg {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
+.scroll-indicator span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400; /* Thin look */
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #38bdf8;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
 }
 
-@keyframes bounce {
+@keyframes pulse {
     0%, 100% {
-        transform: translateX(-50%) translateY(0);
+        opacity: 0.3;
     }
     50% {
-        transform: translateX(-50%) translateY(15px);
+        opacity: 1;
     }
 }
